@@ -1,31 +1,29 @@
 ﻿// Задача 38: Задайте массив вещественных чисел. 
 // Найдите разницу между максимальным и минимальным элементов массива.
-
-
-Console.Write("Укажите количество элементов массива ");
-int num = Convert.ToInt32(Console.ReadLine());
-double[] arr = new double[num];
-
-FillArray(arr);
-string rev_arr = string.Join(", ", arr);
-Console.WriteLine(rev_arr);
-double min=arr[0];
-double max=arr[0];
-for( int i= 0; i < arr.Length; i++)
+double[] CreateArray(int lenght)
 {
-    if(arr[i]>max) max=arr[0];
-    else if (arr[i]<min) min=arr[i];
-} 
-Console.Write($"Разность максимума {Math.Round(max,2)}");
-Console.WriteLine($" и минимума {Math.Round(min,2)} равна {Math.Round((max-min),2)}");
-
-double[] FillArray(double[] mas)
-{
-
-    for (int i = 0; i < mas.Length; i++)
-    {
-        mas[i] = new Random().NextDouble()*10;
+    double[] array = new double[lenght];
+    for (int i = 0; i < lenght; i ++){
+        array[i] = Math.Round((new Random().NextDouble() * 100), 2);
+        if (i < lenght - 1) Console.Write($"{array[i]},  ");
+        else Console.WriteLine($"{array[i]}");
     }
-    return mas;
+    return array;
 }
 
+void Diff(double[] array)
+{
+    double min = array[0];
+    double max = array[0];
+    double diff = 0;
+    for (int i = 1; i < array.Length; i ++)
+    {
+        if (array[i] > max) max = array[i];
+        if (array[i] < min) min = array[i];
+    }
+    diff = max - min;
+    Console.WriteLine(Math.Round(diff, 2));
+}
+double[] num = CreateArray(10);
+Console.WriteLine("Разница между максимальным и минимальным элементами массива равна  ");
+Diff(num);

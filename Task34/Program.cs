@@ -2,12 +2,10 @@
 // Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-
 Console.Write("Укажите количество элементов массива ");
 int num = Convert.ToInt32(Console.ReadLine());
 int count = 0;
 int[] arr = new int[num];
-
 
 int[] FillArray(int[] mas)
 {
@@ -20,10 +18,6 @@ int[] FillArray(int[] mas)
     return mas;
 }
 
-
-Console.Write($"Массив {FillArray(arr)}");
-
-string rev_arr = string.Join(", ", arr);
-Console.WriteLine(rev_arr);
-
-Console.Write($"В массиве {count} четных чисел");
+Console.Write($"Массив ");
+Console.WriteLine (string.Join (",",FillArray(arr)));
+Console.WriteLine($"В массиве {count} четных чисел");
